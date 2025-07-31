@@ -1,104 +1,102 @@
-$(function(){
+    $(function(){
+        $(".wrap-5 .btn").click(function(){
+            $(".wrap-5 .btn").removeClass("active");
+            $(this).addClass("active");
 
-    $(".wrap-5 .btn").click(function(){
-        $(".wrap-5 .btn").removeClass("active");
-        $(this).addClass("active");
+            const txt = $(this).text();
+            if(txt == "All"){
+                $(".all").fadeIn();
+            }
+            else if(txt == "Website"){
+                $(".all").fadeOut(0);
+                $(".web").fadeIn();
+            }
+            else if(txt == "Branding"){
+                $(".all").fadeOut(0);
+                $(".brand").fadeIn();
+            }
+        });
 
-        const txt=$(this).text();
-        if(txt=="All"){
-            $(".all").fadeIn();
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, "0");
+        const monthName = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"];
+        const month = monthName[today.getMonth()];
+        const year = String(today.getFullYear()).slice(-2);
+        const formateDate = `${day} ${month} ${year}`; 
+        $(".wrap-5 small").text("Designed by Author |  " + formateDate);
+
+        $(".wrap-5 .seemore").click(function(){
+            $(this).children("span").toggleClass("fa-minus-circle");
+            $(".wrap-5 .hide").fadeToggle();
+        });
+
+        $(".wrap-7 .seemore").click(function(){
+            $(this).children("span").toggleClass("fa-minus-circle");
+            $(".wrap-7 .hide").fadeToggle();
+        });
+
+        $(".accordion a").click(function(e){
+            e.preventDefault();
+
+            $(".accordion a").removeClass("active");
+            $(this).addClass("active");
+            $(".accordion p").slideUp();
+            $(this).next("p").slideDown();
+        });
+
+        $(".wrap-13 button").click(function(){
+            $("html,body").animate({scrollTop:0});
+        });
+
+        $(".menu").click(function(){
+            $(this).toggleClass("active");
+            $(".collapse").slideToggle();
+        });
+
+        if(screen.width<768){
+            $("nav a").click(function(){
+                $(".menu").removeClass("active");
+                $(".collapse").slideUp();
+            });
         }
-        else if(txt=="Website"){
-            $(".all").fadeOut(0);
-            $(".web").fadeIn();
-        }
-        else if(txt=="Branding"){
-            $(".all").fadeOut(0);
-            $(".brand").fadeIn();
-        }
-    });
 
-    $(".wrap-5 .seemore").click(function(){
-        $(this).children("span").toggleClass("fa-minus-circle");
-        $(".wrap-5 .hide").fadeToggle();
-    });
+        $(".signup").click(function(){
+            $("body").append(`<div class="overlay"></div>`);
+            $("body").append(`<div class="popup"></div>`);
+            const form = $(".hiddenform").html();
+            $(".popup").append(form);
+            $("body").css({"overflow-y":"hidden"});
+            $(".popup input:first").trigger("focus");
 
-    $(".wrap-7 .seemore").click(function(){
-        $(this).children("span").toggleClass("fa-minus-circle");
-        $(".wrap-7 .hide").slideToggle();
-    });
+            $(".popup .close").click(function(){
+                $(".popup, .overlay").remove();
+            $("body").css({"overflow-y":"auto"});
 
-    $(".accordion a").click(function(e){
-        e.preventDefault();
-
-        $(".accordion a").removeClass("active");
-        $(this).addClass("active");
-        $(".accordion p").slideUp();
-        $(this).next("p").slideDown();
-
-    });
-
-
-    $(".wrap-13 button").click(function(){
-        $("html,body").animate({scrollTop:0})
-    });
-
-
-    $(".menu").click(function(){
-        $(this).toggleClass("active");
-        $(".collapse").slideToggle();
-    });
-
-
-    if(screen.width<768){
-        $("nav a").click(function(){
-            $(".menu").removeClass("active");
-            $(".collapse").slideUp();
+            });
+            $(window).keyup(function(e){
+                if(e.which==27){$(".popup, .overlay").remove(); $("body").css({"overflow-y":"auto"});}
+            });
         })
-    }
 
+        $(".banner button, .banner a").click(function(e){
+            e.preventDefault();
+            $("body").append(`<div class="overlay"></div>`);
+            $("body").append(`<div class="popup"><button class="close"><span class="fa fa-times-circle"></span></button></div>`);
 
-    $(".signup").click(function(){
-        $("body").append(`<div class="overlay"></div>`);
-        $("body").append(`<div class="popup"></div>`);
-        const form=$(".hiddenform").html();
-        $(".popup").append(form);
-        $("body").css({"overflow-y":"hidden"});
-        $(".popup input:first").trigger("focus");
-        
-        $(".popup .close").click(function(){
-            $(".popup, .overlay").remove();
-            $("body").css({"overflow-y":"auto"});
+            const video = `<iframe width="560" height="315" src="https://www.youtube.com/embed/ZoGYpAID4TY?si=J3wGKAsT5kfQDurA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+            $(".popup").append(video);
+            $(".popup .close").click(function(){
+                $(".popup, .overlay").remove();
+                $("body").css({"overflow-y":"auto"});
+
+            });
         });
-        $(window).keyup(function(e){
-            if(e.which==27){ $(".popup, .overlay").remove(); $("body").css({"overflow-y":"auto"}); }
-        });
-    });
 
-    $(".banner button, .banner a").click(function(e){
-        e.preventDefault();
-        $("body").append(`<div class="overlay"></div>`);
-        $("body").append(`<div class="popup"><button class="close"><span class="fa fa-times-circle"></span></button></div>`);
-
-        const video=`<iframe width="560" height="315" src="https://www.youtube.com/embed/tQJ4-e-qQVY?si=nBl8RaFv0U3CE9U8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
-
-        $(".popup").append(video);
-
-
-        $(".popup .close").click(function(){
-            $(".popup, .overlay").remove();
-            $("body").css({"overflow-y":"auto"});
+        $(".reviews").bxSlider({
+            controls: false,
+            auto: true,
+            pause:5000,
+            autoHover: true
         });
     });
-
-
-
-    $(".reviews").bxSlider({
-        controls:false,
-        auto:true,
-        pause:5000,
-        autoHover:true
-    });
-
-   
-});

@@ -8,9 +8,7 @@
     <title>IDDO</title>
     <meta name="description" content="IDDO Single Page Website with jQuery">
 
-<!--     <link rel="icon" href="./img/jack.webp"> -->
-    <link rel="icon" href="img/jack.webp?v=2" type="image/webp">
-
+    <link rel="icon" href="img/jack.webp">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -509,76 +507,10 @@
         <button class="btn">Submit</button>
     </form>
   </div>  
-
-<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>    
-<script src="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.js"></script>
-
-<script src="js/common.js"></script>      -->
+  
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
-    $(function(){
-        $(".wrap-5 .btn").click(function(){
-            $(".wrap-5 .btn").removeClass("active");
-            $(this).addClass("active");
+<script src="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.js"></script>
+<script src="js/common.js"></script>
 
-            const txt = $(this).text();
-            if(txt == "All"){
-                $(".all").fadeIn();
-            }
-            else if(txt == "Website"){
-                $(".all").fadeOut(0);
-                $(".web").fadeIn();
-            }
-            else if(txt == "Branding"){
-                $(".all").fadeOut(0);
-                $(".brand").fadeIn();
-            }
-        });
-
-        const today = new Date();
-        const day = String(today.getDate()).padStart(2, "0");
-        const monthName = ["January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"];
-        const month = monthName[today.getMonth()];
-        const year = String(today.getFullYear()).slice(-2);
-        const formateDate = `${day} ${month} ${year}`; 
-        $(".wrap-5 small").text("Designed by Author |  " + formateDate);
-
-        $(".wrap-5 .seemore").click(function(){
-            $(this).children("span").toggleClass("fa-minus-circle");
-            $(".wrap-5 .hide").fadeToggle();
-        });
-
-        $(".wrap-7 .seemore").click(function(){
-            $(this).children("span").toggleClass("fa-minus-circle");
-            $(".wrap-7 .hide").fadeToggle();
-        });
-
-        $(".accordion a").click(function(e){
-            e.preventDefault();
-
-            $(".accordion a").removeClass("active");
-            $(this).addClass("active");
-            $(".accordion p").slideUp();
-            $(this).next("p").slideDown();
-        });
-
-        $(".wrap-13 button").click(function(){
-            $("html,body").animate({scrollTop:0});
-        });
-
-        $(".menu").click(function(){
-            $(this).toggleClass("active");
-            $(".collapse").slideToggle();
-        });
-
-        if(screen.width<768){
-            $("nav a").click(function(){
-                $(".menu").removeClass("active");
-                $(".collapse").slideUp();
-            });
-        }
-    });
-</script>
 </body>
 </html>
